@@ -1,0 +1,14 @@
+1 Bass of C1.mp3 is C
+2 Bass of C2.mp3 is C
+3 Bass of C3.mp3 is C
+4 Bass of C_on_E1.mp3 is E
+5 Bass of C_on_E2.mp3 is E
+6 Bass of C_on_E2_90.mp3 is E
+7 Bass of C_on_E2_FMPiano.mp3 is E
+8 Bass of C_on_E2_guitar.mp3 is E
+9 Bass of C_on_E2_saws.mp3 is E
+10 Bass of C_on_E2_string.mp3 is E
+11 Bass of C_on_E3.mp3 is E
+12 Bass of G_on_B1.mp3 is B
+13 Bass of G_on_B2.mp3 is B
+14 Bass of G_on_B3.mp3 is B
