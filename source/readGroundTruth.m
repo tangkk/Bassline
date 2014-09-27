@@ -1,4 +1,4 @@
-function trueBass = readGroundTruth(groundtruthpath)
+function trueBass = readGroundTruth(groundtruthpath, SINGLE)
 
 if exist(groundtruthpath, 'file') == 2
     % Read txt into cell A

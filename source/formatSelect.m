@@ -1,4 +1,4 @@
-function formatSpec = formatSelect(i)
+function formatSpec = formatSelect(i, files)
 
 if ispc
     if i < length(files)

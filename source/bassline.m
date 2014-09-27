@@ -4,14 +4,9 @@
 % Date: Aug. 16th 2014
 % Organization: The University of Hong Kong
 
-% iterate through all songs
-
-% if DEBUG = 1, test the beatwise section one by one, otherwise test the whole song
-DEBUG = 1;
+DEBUG = 0;
 SINGLE = 73;
-
 ISORDER = 1;
-
 MINWIDTH = 30;
 MINHEIGHT = 0.9;
 
@@ -22,19 +17,17 @@ Root = '../testcase/realchords/anjing/';
 % sort files into an ascending section number order
 [files, filenames] = sortfiles(ISORDER, Root);
 
+% DEBUG = 1 single section, DEBUG = 0, whole song
 if DEBUG == 1
     
     %%%% detect a single bass %%%%
     [song,fs] = audioread([Root files(SINGLE).name]);
 
     % normalize the song (songMono or songDif)
-    sizeSong = size(song);
     [songDif, songMono] = toMono(song);
-
-    playerMono = audioplayer(songMono, fs);
-    playerDif = audioplayer(songDif, fs);
-    playerSong = audioplayer(song, fs);
-    play(playerMono);
+    
+    % play the song
+    songPlay(songMono, fs)
 
     % get the spectrogram and SPL of the piece (FFT) (Dif)
     [f, fftAmpSpec, fftSPLSpec] = myFFT(songMono, fs);
@@ -56,7 +49,7 @@ if DEBUG == 1
     
     groundtruthpath = ['../groundtruth/' subfoldername foldername '.txt'];
 
-    trueBass = readGroundTruth(groundtruthpath);
+    trueBass = readGroundTruth(groundtruthpath, SINGLE);
     
     overtones = overtonegen(bassfreq);
     display(trueBass);
@@ -71,20 +64,15 @@ else
     %%%% detect multiple basses %%%%
     outputpath = ['../output/' foldername '.txt'];
 
-    if exist(outputpath, 'file') == 2
-        delete(outputpath);
-    end
-
     fid = fopen(outputpath, 'w');
     
     for i = 1:1:length(files)
         
-        formatSpec = formatSelect(i);
+        formatSpec = formatSelect(i, files);
 
         [song,fs] = audioread([Root files(i).name]);
 
         % normalize the song (songMono or songDif)
-        sizeSong = size(song);
         [songDif, songMono] = toMono(song);
 
         % get the spectrogram and SPL of the piece (FFT) (Dif)
