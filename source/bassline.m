@@ -8,10 +8,10 @@ DEBUG = 0;
 SINGLE = 73;
 ISORDER = 1;
 MINWIDTH = 30;
-MINHEIGHT = 0.9;
+MINHEIGHT = 0.92;
 
 %%%% read files %%%%
-Root = '../testcase/realchords/anjing/';
+Root = '../testcase/realchords/shijiemori/';
 [foldername, subfoldername] = readfolder(Root);
 
 % sort files into an ascending section number order
