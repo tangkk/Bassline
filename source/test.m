@@ -1,3 +1,9 @@
+% Filename: test.m
+% Function: detect bass line of a song
+% Author: tangkk
+% Date: Oct. 5th 2014
+% Organization: The University of Hong Kong
+
 TEST = 1;
 
 DEBUG = 0;

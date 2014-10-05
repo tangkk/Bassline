@@ -6,14 +6,6 @@
 
 function [correctRate, player] = bassline(DEBUG, SINGLE, ISORDER, MINWIDTH, MINHEIGHT, ROOT)
 
-%%%% input parameters %%%%
-% DEBUG = 1;
-% SINGLE = 73;
-% ISORDER = 1;
-% MINWIDTH = 30;
-% MINHEIGHT = 0.92;
-% ROOT = '../testcase/realchords/shijiemori/';
-
 %%%% read files %%%%
 [foldername, subfoldername] = readfolder(ROOT);
 
