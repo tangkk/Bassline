@@ -1,4 +1,4 @@
-function myPlot(f, fftAmpSpec, fftSPLSpec, loudness)
+function myPlot(f, fftSPLSpec)
 
 close all;
 

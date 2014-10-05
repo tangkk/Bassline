@@ -1,4 +1,4 @@
-function [songDif, songMono] = toMono(song)
+function songMono = toMono(song)
 
 sizeSong = size(song);
 if sizeSong(2) > 1

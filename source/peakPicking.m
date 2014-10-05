@@ -1,4 +1,4 @@
-function [pitchPeaks, pksavg, bass, bassfreq] = peakPicking(f,input, minHeight, minDist)
+function bass = peakPicking(f,input, minHeight, minDist)
 
 [pks,locs] = findpeaks(input,'MINPEAKHEIGHT', minHeight, 'MINPEAKDISTANCE', minDist);
 fpeaks = f(locs);

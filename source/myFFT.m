@@ -1,4 +1,4 @@
-function [f, fftAmpSpec, fftSPLSpec] = myFFT(song, fs)
+function [f, fftSPLSpec] = myFFT(song, fs)
 
 songLength = length(song);
 NFFT = 2^nextpow2(songLength);
