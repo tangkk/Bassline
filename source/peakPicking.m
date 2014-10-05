@@ -39,6 +39,14 @@ end
 fpeaks(fpeaks == 0) = [];
 display(fpeaks);
 
-pksavg = rms(pks);
-[pitchPeaks, bass] = freq2pitchclass(fpeaks);
-bassfreq = fpeaks(1);
+bassfreq = [];
+pitchPeaks = [];
+bass = [];
+pksavg = [];
+
+% assign values if fpeaks is not empty
+if ~isempty(fpeaks)
+    pksavg = rms(pks);
+    [pitchPeaks, bass] = freq2pitchclass(fpeaks);
+    bassfreq = fpeaks(1);
+end
