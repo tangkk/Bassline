@@ -4,24 +4,27 @@
 % Date: Aug. 16th 2014
 % Organization: The University of Hong Kong
 
-DEBUG = 0;
-SINGLE = 73;
-ISORDER = 1;
-MINWIDTH = 30;
-MINHEIGHT = 0.92;
+function correctRate = bassline(DEBUG, SINGLE, ISORDER, MINWIDTH, MINHEIGHT, ROOT)
+
+%%%% input parameters %%%%
+% DEBUG = 0;
+% SINGLE = 73;
+% ISORDER = 1;
+% MINWIDTH = 30;
+% MINHEIGHT = 0.92;
+% ROOT = '../testcase/realchords/shijiemori/';
 
 %%%% read files %%%%
-Root = '../testcase/realchords/shijiemori/';
-[foldername, subfoldername] = readfolder(Root);
+[foldername, subfoldername] = readfolder(ROOT);
 
 % sort files into an ascending section number order
-[files, filenames] = sortfiles(ISORDER, Root);
+[files, filenames] = sortfiles(ISORDER, ROOT);
 
 % DEBUG = 1 single section, DEBUG = 0, whole song
 if DEBUG == 1
     
     %%%% detect a single bass %%%%
-    [song,fs] = audioread([Root files(SINGLE).name]);
+    [song,fs] = audioread([ROOT files(SINGLE).name]);
 
     % normalize the song (songMono or songDif)
     [songDif, songMono] = toMono(song);
@@ -70,7 +73,7 @@ else
         
         formatSpec = formatSelect(i, files);
 
-        [song,fs] = audioread([Root files(i).name]);
+        [song,fs] = audioread([ROOT files(i).name]);
 
         % normalize the song (songMono or songDif)
         [songDif, songMono] = toMono(song);
@@ -101,7 +104,7 @@ else
 
     groundtruthpath = ['../groundtruth/' subfoldername foldername '.txt'];
     
-    diffGroundTruth(outputpath, groundtruthpath);
+    correctRate = diffGroundTruth(outputpath, groundtruthpath);
 
 end
 

@@ -1,4 +1,4 @@
-function diffGroundTruth(outputpath, groundtruthpath)
+function correctRate = diffGroundTruth(outputpath, groundtruthpath)
 
 %%%% compare the correct rate %%%%
 if exist(groundtruthpath, 'file') == 2 && exist(outputpath, 'file') == 2
