@@ -1,11 +1,13 @@
-function bass = peakPicking(f,input, minHeight, minDist)
+function bass = peakPicking(f,input, minHeight, minDist, isdebug)
 
 [pks,locs] = findpeaks(input,'MINPEAKHEIGHT', minHeight, 'MINPEAKDISTANCE', minDist);
 fpeaks = f(locs);
 % reduce noisy peaks
 fpeaks = reducePeaks(fpeaks);
 
-display(fpeaks);
+if isdebug == 1
+    display(fpeaks);
+end
 
 firmfpeaks = zeros(1,length(fpeaks));
 for i = 1:1:5 
@@ -14,15 +16,21 @@ for i = 1:1:5
     newfpeaks = f(locs);
     % reduce noisy peaks
     newfpeaks = reducePeaks(newfpeaks);
-    display(newfpeaks);
+    if isdebug == 1
+        display(newfpeaks);
+    end
     
     newfirmfpeaks = comparePeaks(fpeaks, newfpeaks, []);
     firmfpeaks = combinePeaks(firmfpeaks, newfirmfpeaks);
-    display(firmfpeaks);
+    if isdebug == 1
+        display(firmfpeaks);
+    end
 end
 
 firmfpeaks(firmfpeaks == 0) = [];
-display(firmfpeaks);
+if isdebug == 1
+    display(firmfpeaks);
+end
 
 for i = 1:1:5
     %%% Sweep down to reduce
@@ -30,14 +38,20 @@ for i = 1:1:5
     newfpeaks = f(locs);
     % reduce noisy peaks
     newfpeaks = reducePeaks(newfpeaks);
-    display(newfpeaks);
+    if isdebug == 1
+        display(newfpeaks);
+    end
     
     fpeaks = comparePeaks(fpeaks, newfpeaks, firmfpeaks);
-    display(fpeaks);
+    if isdebug == 1
+        display(fpeaks);
+    end
 end
 
 fpeaks(fpeaks == 0) = [];
-display(fpeaks);
+if isdebug == 1
+    display(fpeaks);
+end
 
 bassfreq = [];
 pitchPeaks = [];

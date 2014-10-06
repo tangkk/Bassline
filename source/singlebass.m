@@ -5,19 +5,24 @@ function [bass, player] = singlebass(path, isdebug, minheight, minwidth)
 
     % normalize the song (songMono or songDif)
     songMono = toMono(song);
+    
+    % downsampling
+    downSampleRate = 10;
+    [songMono, fs] = myDownsample(songMono, downSampleRate, fs);
 
     % get the spectrogram and SPL of the piece (FFT) (Dif)
     [f, fftSPLSpec] = myFFT(songMono, fs);
     
     % reduce the range of vectors
-    [f, fftSPLSpec] = reduceLength(f, fftSPLSpec);
+    % the reduced frequency range is about 350 Hz
+    [f, fftSPLSpec] = reduceLength(f, fftSPLSpec, 64/downSampleRate);
     
     % normalize the features
     maxVal = max(fftSPLSpec);
     fftSPLSpec = fftSPLSpec ./ maxVal;
 
     % findpeaks of fft spectrum with small min distance
-    bass = peakPicking(f,fftSPLSpec, minheight, minwidth);
+    bass = peakPicking(f,fftSPLSpec, minheight, minwidth, isdebug);
     
     if isdebug == 1
         % plot the spectrum

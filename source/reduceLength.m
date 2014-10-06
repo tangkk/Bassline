@@ -1,3 +1,3 @@
-function [outa,outb] = reduceLength(ina, inb)
-outa = ina(1:ceil(end/64));
-outb = inb(1:ceil(end/64));
+function [outa,outb] = reduceLength(ina, inb, n)
+outa = ina(1:ceil(end/n));
+outb = inb(1:ceil(end/n));
