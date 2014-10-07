@@ -1,4 +1,4 @@
-function correctRate = diffGroundTruth(outputpath, groundtruthpath)
+function [correctRate, missesvector] = diffGroundTruth(outputpath, groundtruthpath)
 
 %%%% compare the correct rate %%%%
 if exist(groundtruthpath, 'file') == 2 && exist(outputpath, 'file') == 2
@@ -26,7 +26,4 @@ if exist(groundtruthpath, 'file') == 2 && exist(outputpath, 'file') == 2
 
     fclose(fid1);
     fclose(fid2);
-
-    disp(correctRate);
-    disp(missesvector);
 end

@@ -4,7 +4,7 @@
 % Date: Aug. 16th 2014
 % Organization: The University of Hong Kong
 
-function [correctRate, player] = bassline(DEBUG, SINGLE, ISORDER, MINWIDTH, MINHEIGHT, ROOT)
+function [correctRate, misses, player] = bassline(DEBUG, SINGLE, ISORDER, MINWIDTH, MINHEIGHT, ROOT)
 
 close all;
 
@@ -28,7 +28,7 @@ if DEBUG == 0
     end
     fclose(fid);
 
-    correctRate = diffGroundTruth(outputpath, groundtruthpath);
+    [correctRate, misses] = diffGroundTruth(outputpath, groundtruthpath);
 end
 
 if DEBUG == 1
@@ -38,7 +38,13 @@ if DEBUG == 1
     trueBass = readGroundTruth(groundtruthpath, SINGLE);
     display(trueBass);
     display(bass);
-    correctRate = isequal(trueBass, bass);
+    if isequal(trueBass, bass)
+        correctRate = 1;
+        misses = 0;
+    else
+        correctRate = 0;
+        misses = SINGLE;
+    end
 end
     
 % end of file

@@ -9,11 +9,11 @@
 9 Bass of 1984.9 is B
 10 Bass of 1984.10 is A#
 11 Bass of 1984.11 is G#
-12 Bass of 1984.12 is F#
+12 Bass of 1984.12 is B
 13 Bass of 1984.13 is E
 14 Bass of 1984.14 is E
 15 Bass of 1984.15 is F#
-16 Bass of 1984.16 is C#
+16 Bass of 1984.16 is F#
 17 Bass of 1984.17 is B
 18 Bass of 1984.18 is A#
 19 Bass of 1984.19 is G#
