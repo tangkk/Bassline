@@ -4,10 +4,10 @@
 % Date: Oct. 5th 2014
 % Organization: The University of Hong Kong
 
-TEST = 1;
+TEST = 0;
 
-DEBUG = 1;
-SINGLE = 5;
+DEBUG = 0;
+SINGLE = 118;
 ISORDER = 1;
 MINWIDTH = 30;
 MINHEIGHT = 0.90;

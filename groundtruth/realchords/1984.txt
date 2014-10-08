@@ -18,7 +18,7 @@
 18 Bass of 1984.18 is A#
 19 Bass of 1984.19 is G#
 20 Bass of 1984.20 is F#
-21 Bass of 1984.21 is E
+21 Bass of 1984.21 is B
 22 Bass of 1984.22 is E
 23 Bass of 1984.23 is F#
 24 Bass of 1984.24 is F#
@@ -28,14 +28,14 @@
 28 Bass of 1984.28 is F#
 29 Bass of 1984.29 is E
 30 Bass of 1984.30 is E
-31 Bass of 1984.31 is F#
+31 Bass of 1984.31 is E
 32 Bass of 1984.32 is F#
 33 Bass of 1984.33 is B
 34 Bass of 1984.34 is B
 35 Bass of 1984.35 is B
 36 Bass of 1984.36 is A#
 37 Bass of 1984.37 is G#
-38 Bass of 1984.38 is F#
+38 Bass of 1984.38 is B
 39 Bass of 1984.39 is E
 40 Bass of 1984.40 is E
 41 Bass of 1984.41 is C#
@@ -59,7 +59,7 @@
 59 Bass of 1984.59 is B
 60 Bass of 1984.60 is A#
 61 Bass of 1984.61 is G#
-62 Bass of 1984.62 is F#
+62 Bass of 1984.62 is B
 63 Bass of 1984.63 is E
 64 Bass of 1984.64 is E
 65 Bass of 1984.65 is F#
@@ -75,7 +75,7 @@
 75 Bass of 1984.75 is B
 76 Bass of 1984.76 is A#
 77 Bass of 1984.77 is G#
-78 Bass of 1984.78 is F#
+78 Bass of 1984.78 is B
 79 Bass of 1984.79 is E
 80 Bass of 1984.80 is E
 81 Bass of 1984.81 is F#
@@ -83,7 +83,7 @@
 83 Bass of 1984.83 is B
 84 Bass of 1984.84 is A#
 85 Bass of 1984.85 is G#
-86 Bass of 1984.86 is F#
+86 Bass of 1984.86 is B
 87 Bass of 1984.87 is E
 88 Bass of 1984.88 is E
 89 Bass of 1984.89 is F#
@@ -91,7 +91,7 @@
 91 Bass of 1984.91 is B
 92 Bass of 1984.92 is A#
 93 Bass of 1984.93 is G#
-94 Bass of 1984.94 is F#
+94 Bass of 1984.94 is B
 95 Bass of 1984.95 is E
 96 Bass of 1984.96 is E
 97 Bass of 1984.97 is F#
