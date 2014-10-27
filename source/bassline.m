@@ -4,7 +4,7 @@
 % Date: Aug. 16th 2014
 % Organization: The University of Hong Kong
 
-function [correctRate, misses, player] = bassline(DEBUG, SINGLE, ISORDER, MINWIDTH, MINHEIGHT, ROOT)
+function [correctRate, misses, player] = bassline(DEBUG, SINGLE, ISORDER, MINWIDTH, MINHEIGHT, MINPROM, ROOT)
 
 close all;
 
@@ -23,7 +23,7 @@ if DEBUG == 0
     fid = fopen(outputpath, 'w');
     for i = 1:1:length(files)  
         formatSpec = formatSelect(i, files);
-        [bass, player] = singlebass([ROOT files(i).name], DEBUG, MINHEIGHT, MINWIDTH);
+        [bass, player] = singlebass([ROOT files(i).name], DEBUG, MINHEIGHT, MINWIDTH, MINPROM);
         fprintf(fid, formatSpec, i, files(i).name(1:end-4), bass);
     end
     fclose(fid);
@@ -33,7 +33,7 @@ end
 
 if DEBUG == 1
     %%%% detect a single bass %%%%
-    [bass, player] = singlebass([ROOT files(SINGLE).name], DEBUG, MINHEIGHT, MINWIDTH);
+    [bass, player] = singlebass([ROOT files(SINGLE).name], DEBUG, MINHEIGHT, MINWIDTH, MINPROM);
     
     trueBass = readGroundTruth(groundtruthpath, SINGLE);
     display(trueBass);

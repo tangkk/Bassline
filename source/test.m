@@ -9,8 +9,9 @@ TEST = 0;
 DEBUG = 0;
 SINGLE = 118;
 ISORDER = 1;
-MINWIDTH = 30;
-MINHEIGHT = 0.90;
+MINWIDTH = 40;
+MINHEIGHT = 0.89;
+MINPROM = 0.33;
 ROOT = '../testcase/realchords/';
 NAME = 'anjing';
 subRoots = dir(ROOT);
@@ -26,7 +27,7 @@ if TEST == 0 && ~isempty(subRoots)
     for i = 1:1:length(subRoots)
         name = subRoots(i).name;
         foldername = [ROOT name '/'];
-        [correctRate, misses, player] = bassline(DEBUG, SINGLE, ISORDER, MINWIDTH, MINHEIGHT, foldername);
+        [correctRate, misses, player] = bassline(DEBUG, SINGLE, ISORDER, MINWIDTH, MINHEIGHT, MINPROM, foldername);
         sumCorrectRate = sumCorrectRate + correctRate;
         display(name);
         display(correctRate);
@@ -45,7 +46,7 @@ end
 %%%%%% test one %%%%%%
 if TEST == 1
     testRoot = [ROOT NAME '/'];
-    [correctRate, misses, player] = bassline(DEBUG, SINGLE, ISORDER, MINWIDTH, MINHEIGHT, testRoot);
+    [correctRate, misses, player] = bassline(DEBUG, SINGLE, ISORDER, MINWIDTH, MINHEIGHT, MINPROM, testRoot);
     display(DEBUG);
     display(NAME);
     display(misses);

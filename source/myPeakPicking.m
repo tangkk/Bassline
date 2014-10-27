@@ -1,6 +1,6 @@
-function bass = myPeakPicking(f,input, minHeight, minDist, isdebug)
+function bass = myPeakPicking(f,input, minHeight, minDist, minProm, isdebug)
 
-[pks,locs] = findpeaks(input,'MINPEAKHEIGHT', minHeight, 'MINPEAKDISTANCE', minDist, 'MinPeakProminence', 0.1);
+[pks,locs] = findpeaks(input,'MINPEAKHEIGHT', minHeight, 'MINPEAKDISTANCE', minDist, 'MinPeakProminence', minProm);
 fpeaks = f(locs);
 
 bass = [];

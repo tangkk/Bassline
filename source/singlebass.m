@@ -1,4 +1,4 @@
-function [bass, player] = singlebass(path, isdebug, minheight, minwidth)
+function [bass, player] = singlebass(path, isdebug, minheight, minwidth, minprom)
 
     %%%% detect a single bass %%%%
     [song,fs] = audioread(path);
@@ -19,14 +19,14 @@ function [bass, player] = singlebass(path, isdebug, minheight, minwidth)
     
     % smooth the spectrum
     % fftSPLSpec = meanfilter(fftSPLSpec,3);
-    fftSPLSpec = sgolayfilt(fftSPLSpec, 5, 7);
+    % fftSPLSpec = sgolayfilt(fftSPLSpec, 5, 7);
     
     % normalize the features
     maxVal = max(fftSPLSpec);
     fftSPLSpec = fftSPLSpec ./ maxVal;
 
     % findpeaks of fft spectrum with small min distance
-    bass = myPeakPicking(f,fftSPLSpec, minheight, minwidth, isdebug);
+    bass = myPeakPicking(f,fftSPLSpec, minheight, minwidth, minprom, isdebug);
     % bass = peakPicking(f,fftSPLSpec, minheight, minwidth, isdebug);
     
     if isdebug == 1
