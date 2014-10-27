@@ -12,7 +12,7 @@ ISORDER = 1;
 MINWIDTH = 30;
 MINHEIGHT = 0.90;
 ROOT = '../testcase/realchords/';
-NAME = '1984';
+NAME = 'anjing';
 subRoots = dir(ROOT);
 subRoots = subRoots(3:end); %exclude . and .. folder
 numSongs = length(subRoots);
@@ -21,7 +21,8 @@ correctRates = [];
 misses = [];
 
 %%%%%% test all %%%%%%
-if TEST == 0 && ~isempty(subRoots) && DEBUG == 0
+if TEST == 0 && ~isempty(subRoots)
+    DEBUG = 0;
     for i = 1:1:length(subRoots)
         name = subRoots(i).name;
         foldername = [ROOT name '/'];

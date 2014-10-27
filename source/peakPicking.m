@@ -2,6 +2,8 @@ function bass = peakPicking(f,input, minHeight, minDist, isdebug)
 
 [pks,locs] = findpeaks(input,'MINPEAKHEIGHT', minHeight, 'MINPEAKDISTANCE', minDist);
 fpeaks = f(locs);
+pksavg = rms(pks);
+
 % reduce noisy peaks
 fpeaks = reducePeaks(fpeaks);
 
@@ -56,11 +58,11 @@ end
 bassfreq = [];
 pitchPeaks = [];
 bass = [];
-pksavg = [];
+% pksavg = [];
 
 % assign values if fpeaks is not empty
 if ~isempty(fpeaks)
-    pksavg = rms(pks);
+%     pksavg = rms(pks);
     [pitchPeaks, bass] = freq2pitchclass(fpeaks);
     bassfreq = fpeaks(1);
 end

@@ -8,7 +8,7 @@ close all;
 % xlabel('Frequency (Hz)');
 % ylabel('|song(f)|');
 
-figure('Position', [500 0 1000 700]);
+figure('Position', [200 100 1000 700]);
 plot(f, fftSPLSpec);
 title('Single-Sided Sound Pressure Level Spectrum of song');
 xlabel('Frequency (Hz)');
