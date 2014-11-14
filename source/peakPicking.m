@@ -14,7 +14,7 @@ end
 firmfpeaks = zeros(1,length(fpeaks));
 for i = 1:1:5 
     %%% Sweep up to confirm
-    [pks,locs] = findpeaks(input,'MINPEAKHEIGHT', minHeight + 0.01*i, 'MINPEAKDISTANCE', minDist, 'MinPeakProminence', minProm);
+    [pks,locs] = findpeaks(input,'MinPeakHeight', minHeight + 0.01*i, 'MinPeakDistance', minDist, 'MinPeakProminence', minProm);
     newfpeaks = f(locs);
     % reduce noisy peaks
     newfpeaks = reducePeaks(newfpeaks);
@@ -36,7 +36,7 @@ end
 
 for i = 1:1:5
     %%% Sweep down to reduce
-    [pks,locs] = findpeaks(input,'MINPEAKHEIGHT', minHeight - 0.01*i, 'MINPEAKDISTANCE', minDist, 'MinPeakProminence', minProm);
+    [pks,locs] = findpeaks(input,'MinPeakHeight', minHeight - 0.01*i, 'MinPeakDistance', minDist, 'MinPeakProminence', minProm);
     newfpeaks = f(locs);
     % reduce noisy peaks
     newfpeaks = reducePeaks(newfpeaks);

@@ -1,4 +1,4 @@
-function [bass, player] = singlebass(path, isdebug, minheight, mindist, minprom)
+function [bass, player] = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
 
     %%%% detect a single bass %%%%
     [song,fs] = audioread(path);
@@ -31,7 +31,9 @@ function [bass, player] = singlebass(path, isdebug, minheight, mindist, minprom)
     
     if isdebug == 1
         % plot the spectrum
-        myPlot(f, fftSPLSpec);
+        if isplot == 1
+            myPlot(f, fftSPLSpec);
+        end
 
         % play the song
         player = audioplayer(songMono, fs);

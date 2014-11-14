@@ -6,9 +6,10 @@
 
 TEST = 0;
 
-DEBUG = 1;
-SINGLE = 117;
+DEBUG = 0;
+SINGLE = 47;
 ISORDER = 1;
+ISPLOT = 1;
 MINPROM = 0.33;
 MINHEIGHT = 0.89;
 MINDIST = 40;
@@ -28,7 +29,7 @@ if TEST == 0 && ~isempty(subRoots)
     for i = 1:1:length(subRoots)
         name = subRoots(i).name;
         foldername = [ROOT name '/'];
-        [correctRate, lengthSong, misses, player] = bassline(DEBUG, SINGLE, ISORDER, MINDIST, MINHEIGHT, MINPROM, foldername);
+        [correctRate, lengthSong, misses, player] = bassline(DEBUG, SINGLE, ISORDER, ISPLOT, MINDIST, MINHEIGHT, MINPROM, foldername);
         sumCorrectRate = sumCorrectRate + correctRate*lengthSong;
         sumLength = sumLength + lengthSong;
         display(name);
@@ -47,7 +48,7 @@ end
 %%%%%% test one %%%%%%
 if TEST == 1
     testRoot = [ROOT NAME '/'];
-    [correctRate, lengthSong, misses, player] = bassline(DEBUG, SINGLE, ISORDER, MINDIST, MINHEIGHT, MINPROM, testRoot);
+    [correctRate, lengthSong, misses, player] = bassline(DEBUG, SINGLE, ISORDER, ISPLOT,MINDIST, MINHEIGHT, MINPROM, testRoot);
     display(NAME);
     display(lengthSong);
     display(misses);
