@@ -1,6 +1,6 @@
-function bass = peakPicking(f,input, minHeight, minDist, isdebug)
+function bass = peakPicking(f,input, minHeight, minDist, minProm,isdebug)
 
-[pks,locs] = findpeaks(input,'MINPEAKHEIGHT', minHeight, 'MINPEAKDISTANCE', minDist);
+[pks,locs] = findpeaks(input,'MinPeakHeight', minHeight, 'MinPeakDistance', minDist, 'MinPeakProminence', minProm);
 fpeaks = f(locs);
 pksavg = rms(pks);
 
@@ -14,7 +14,7 @@ end
 firmfpeaks = zeros(1,length(fpeaks));
 for i = 1:1:5 
     %%% Sweep up to confirm
-    [pks,locs] = findpeaks(input,'MINPEAKHEIGHT', minHeight + 0.01*i, 'MINPEAKDISTANCE', minDist);
+    [pks,locs] = findpeaks(input,'MINPEAKHEIGHT', minHeight + 0.01*i, 'MINPEAKDISTANCE', minDist, 'MinPeakProminence', minProm);
     newfpeaks = f(locs);
     % reduce noisy peaks
     newfpeaks = reducePeaks(newfpeaks);
@@ -36,7 +36,7 @@ end
 
 for i = 1:1:5
     %%% Sweep down to reduce
-    [pks,locs] = findpeaks(input,'MINPEAKHEIGHT', minHeight - 0.01*i, 'MINPEAKDISTANCE', minDist);
+    [pks,locs] = findpeaks(input,'MINPEAKHEIGHT', minHeight - 0.01*i, 'MINPEAKDISTANCE', minDist, 'MinPeakProminence', minProm);
     newfpeaks = f(locs);
     % reduce noisy peaks
     newfpeaks = reducePeaks(newfpeaks);
@@ -58,7 +58,6 @@ end
 bassfreq = [];
 pitchPeaks = [];
 bass = [];
-% pksavg = [];
 
 % assign values if fpeaks is not empty
 if ~isempty(fpeaks)
