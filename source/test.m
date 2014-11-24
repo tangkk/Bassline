@@ -4,17 +4,30 @@
 % Date: Oct. 5th 2014
 % Organization: The University of Hong Kong
 
-TEST = 0;
+% set SINGLE = -1 to test all songs, SINGLE  = 0 to test one song
+% SINGLE = section number to test a specific section
 
-DEBUG = 0;
-SINGLE = 47;
+SINGLE = 53;
 ISORDER = 1;
-ISPLOT = 1;
-MINPROM = 0.33;
-MINHEIGHT = 0.89;
+ISPLOT = 0;
+MINPROM = 0.06;
+MINHEIGHT = 0.85;
 MINDIST = 40;
 ROOT = '../testcase/realchords/';
-NAME = 'anjing';
+NAME = '1984';
+
+if SINGLE == 0
+    TEST = 1;
+    DEBUG = 0;
+else
+    if SINGLE == -1
+        TEST = 0;
+        DEBUG = 0;
+    else
+        TEST = 1;
+        DEBUG = 1;
+    end
+end
 subRoots = dir(ROOT);
 subRoots = subRoots(3:end); %exclude . and .. folder
 numSongs = length(subRoots);
