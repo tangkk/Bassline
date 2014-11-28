@@ -10,9 +10,9 @@
 SINGLE = -1;
 ISORDER = 1;
 ISPLOT = 1;
-MINPROM = 0.2;
-MINHEIGHT = 0.89;
-MINDIST = 40;
+MINPROM = 0.20;
+MINHEIGHT = 0.6;
+MINDIST = 15;
 THRESHOLD = 0;
 ROOT = '../testcase/realchords/';
 NAME = '1984';

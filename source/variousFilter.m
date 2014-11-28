@@ -1,4 +1,4 @@
-function out = preprocess(in)
+function out = variousFilter(in)
 
 N = 10;
 LI = length(in);

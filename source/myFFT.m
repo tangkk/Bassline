@@ -18,7 +18,5 @@ fftSPLSpec = (1/songLength).*abs(fftSong(1:NFFT/2+1)).^2;
 fftSPLSpec(2:end-1) = 2*fftSPLSpec(2:end-1);
 pref = 20.*10.^(-6);
 fftSPLSpec = 10*log10(fftSPLSpec./(pref.^2));
-% do not normalize
-% maxfftAmpSpec = max(fftAmpSpec);
-% fftAmpSpec = fftAmpSpec ./ maxfftAmpSpec;
+
 

@@ -3,7 +3,7 @@ function select = selectPeaks(input, locs, pks, threshold, wlength)
 % select which peak to be the true bass, analysis first peak first
 % algorithm:
 % 1. pick a neighbourhood of N points around the peak location
-% 2. compute the value of this neighbourhood
+% 2. compute the values of this neighbourhood
 % 3. compute the local maximas of this neighbourhood
 % 4. take the mean of the result of 3
 % 5. compute the difference of the original peak value and the mean
@@ -13,7 +13,6 @@ function select = selectPeaks(input, locs, pks, threshold, wlength)
 select = 1; % initialize select as 1 (default is the first peak location)
 for i = 1:1:length(locs)
 %     display(locs);
-    N = 0;
     if (locs(i) > wlength)
         N = (locs(i)-wlength:1:locs(i)+wlength);
     else
@@ -26,17 +25,18 @@ for i = 1:1:length(locs)
 %     display(localMaximas);
     if length(localMaximas) > 1
         localMaximas = sort(localMaximas);
+        % delete the largest one
         localMaximas = localMaximas(1:end-1);
     end
-    localMaximas = sort(localMaximas);
     medlocalMaximas = median(localMaximas);
     meanlocalMaximas = mean(localMaximas);
 %     display(medlocalMaximas);
 %     display(meanlocalMaximas);
-    D = pks(i) - meanlocalMaximas;
-%     display(D);
     stdlocalMaximas = std(localMaximas);
 %     display(stdlocalMaximas);
+
+    D = pks(i) - meanlocalMaximas;
+%     display(D);
 
     if D < threshold
         continue;
