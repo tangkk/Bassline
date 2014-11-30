@@ -15,7 +15,7 @@ MINHEIGHT = 0.80;
 MINDIST = 20;
 THRESHOLD = 0;
 ROOT = '../testcase/realchords/';
-NAME = 'haoting';
+NAME = '1984';
 
 if SINGLE == 0
     TEST = 1;
@@ -68,7 +68,7 @@ if TEST == 1
     display(misses);
     display(correctRate);
     if DEBUG == 1
-        play(player);
+%         play(player);
     end
 end
 

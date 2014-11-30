@@ -1,4 +1,4 @@
-function [pks,locs] = myPeakPicking(input, minHeight, minDist, minProm, isdebug)
+function [pks,locs] = myPeakPicking(input, minHeight, minDist, minProm, isdebug, isN)
 
 % Peak hierarchy in general (clear):
 % - P0: all raw peaks (all local maximas)
@@ -43,7 +43,7 @@ function [pks,locs] = myPeakPicking(input, minHeight, minDist, minProm, isdebug)
 pks = [];
 locs = [];
 lastloc = 1;
-N = 40; % neighhood length
+N = 300; % neighhood length
 len = length(input);
 for i = 2:1:len - 1
     if input(i) > input(i-1) && input(i) >= input(i+1)
@@ -51,22 +51,25 @@ for i = 2:1:len - 1
             this = input(i);
             x = 1;
             y = len;
-            for j = i-1:-1:1
-                if input(j) >= this
-                    x = j;
-                    break;
+            if isN
+                lnbh = max(1,i-N):1:i;
+                rnbh = i:1:min(len,i+N);
+            else
+                for j = i-1:-1:1
+                    if input(j) >= this
+                        x = j;
+                        break;
+                    end
                 end
-            end
-            for j = i+1:1:len
-                if input(j) >= this
-                    y = j;
-                    break;
+                for j = i+1:1:len
+                    if input(j) >= this
+                        y = j;
+                        break;
+                    end
                 end
+                lnbh = x:1:i;
+                rnbh = i:1:y;
             end
-%             lnbh = max(1,i-N):1:i;
-%             rnbh = i:1:min(len,i+N);
-            lnbh = x:1:i;
-            rnbh = i:1:y;
             lprom = this - min(input(lnbh));
             rprom = this - min(input(rnbh));
             prom = min(lprom, rprom);
@@ -77,11 +80,6 @@ for i = 2:1:len - 1
             end
         end
     end
-end
-
-if isdebug
-    display(pks);
-    display(locs);
 end
 
 
