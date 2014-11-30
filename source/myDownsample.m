@@ -1,3 +1,4 @@
+% low pass and then downsampled (will not affect low freq)
 function [out, fs] = myDownsample(in, n, fs)
 
 in = myLPF(in);

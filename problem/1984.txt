@@ -1,0 +1,62 @@
+Detail analysis of song 1984 (true bass, detected bass, miss reasons)
+
+1984 misses with parameter set (with MF only)
+MINPROM = 0.1;
+MINHEIGHT = 0.89;
+MINDIST = 40;
+(27    37    45    47    53    55    61    70    74    82    98   101)
+27 T=G#, B=D#, lack minProm and minHeight
+37 T=G#, B=A#, peak not obvious
+45 T=G#, B=A#, lack minHeight
+47 T=E, B=B, B looks like a real peak
+53 T=G#, B=A#, peak not obvious, similar as 45
+55 T=E, B=B, B looks like a real peak
+61 T=G#, B=F#, lack of minHeight
+70 T=F#, B=B, lack of minHeight
+74 T=F#, B=A#, lack of minHeight
+82 T=F#, B=A#, lack of minHeight
+98 T=F#, B=A#, lack of minHeight
+101 T=G#, B=F#, too noisy
+
+1984 misses with parameter set (with MF only)
+MINPROM = 0.1;
+MINHEIGHT = 0.85;
+MINDIST = 40;
+(19    20    27    37    45    47    53    55    70    71    74    79    82    93    98   101)
+19 T=G#, B=A#, two peaks merge together(G# and A#) merge together
+20 T=F#, B=B, over minProm, lack of minHeight
+27 T=G#, B=D#, over minProm, lack of minHeight
+37 T=G#, B=A#, over minProm
+45 T=G#, B=A#, over minProm
+47 T=E, B=B, B looks like a real peak
+53 T=G#, B=A#, over minProm
+55 T=E, B=B, B looks like a real peak
+70 T=F#, B=B, over minProm
+71 T=E, B=B, B looks like a real peak
+74 T=F#, B=A#, over minProm
+79 T=E, B=B, B looks like a real peak
+82 T=F#, B=A#, over minProm
+93 T=G#, B=A#, two peaks merge together(G# and A#) merge together
+98 T=F#, B=A#, over minProm
+101 T=G#, B=F#, too noisy
+
+1984 misses with parameter set (with preprocess)
+MINPROM = 0.06;
+MINHEIGHT = 0.85;
+MINDIST = 40;
+(12    19    20    27    37    47    50    53    55    57    64    70    71    79    93   101)
+12 T=B, B=F#, F# looks like a real peak
+19 T=G#, B=A#, two peaks merge together(G# and A#) merge together
+20 T=F#, B=B, still lack of minHeight
+27 T=G#, B=D#, over minProm, lack of minHeight
+37 T=G#, B=A#, over minProm
+...
+
+1984 misses with parameter set (with MOM)
+MINPROM = 0.2;
+MINHEIGHT = 0.80;
+MINDIST = 40;
+(2    21    27    31    37    38    45    53    55    60    62    78    82    86    93    98   101)
+2 T=A#, B=C#, 
+
+

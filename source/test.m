@@ -7,7 +7,7 @@
 % set SINGLE = -1 to test all songs, SINGLE  = 0 to test one song
 % SINGLE = section number to test a specific section
 
-SINGLE = -1;
+SINGLE = 65;
 ISORDER = 1;
 ISPLOT = 1;
 MINPROM = 0.20;
@@ -15,7 +15,7 @@ MINHEIGHT = 0.6;
 MINDIST = 15;
 THRESHOLD = 0;
 ROOT = '../testcase/realchords/';
-NAME = '1984';
+NAME = 'haoting';
 
 if SINGLE == 0
     TEST = 1;

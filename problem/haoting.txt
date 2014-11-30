@@ -1,0 +1,15 @@
+Detail analysis of song haoting (true bass, detected bass, miss reasons)
+
+haoting misses with parameter set (with OF + MOM only)
+(1     2     3     4     5     6    12    17    26    59    65)
+1 T=G, B=C#, the fix reduced spectrum doesn't cover the true peak (try adaptive range)
+2 T=C, B=A, the fix reduced spectrum doesn't cover the true peak
+3 T=B, B=A, the fix reduced spectrum doesn't cover the true peak
+4 T=A, B=D, the fix reduced spectrum doesn't cover the true peak
+5 T=G, B=F#, the fix reduced spectrum doesn't cover the true peak quite well
+6 T=F, B=G, the fix reduced spectrum doesn't cover the true peak quite well
+12 T=A, B=C, minProm constrain filter out the peak at 219Hz (try implement the minProm yourself and add more flexibility)
+17 T=A, B=C, minProm constrain filter out the peak at 219Hz
+26 T=E, B=F, true peak doesn't get overtone sum, because the location of true peak too high
+59 T=G#, B=D, true peak doesn't get overtone sum, because the location of true peak too high
+65 T=A, B=D#, true peak doesn't get overtone sum, because the location of true peak too high
