@@ -1,4 +1,4 @@
-function loudness = SPL2loudness(fftSPLSpec, f)
+function loudness = spl2loudness(fftSPLSpec, f)
 
 % calculate the A-weighting curve
 RaNom = ((12200.^2).*(f.^4));

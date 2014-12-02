@@ -27,7 +27,7 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
 %     tonaltype = pitch2name(tonal(1));
     
     % compress the spectrum by loudness measure
-    % fftSPLSpec = SPL2loudness(fftSPLSpec, f);
+    % fftSPLSpec = spl2loudness(fftSPLSpec, f);
     
     % adaptively choosing a starting point of a working range
     [initiallocs, lstart, lend] = adaptiveRangeSelect(fftSPLSpec, 0.85);
