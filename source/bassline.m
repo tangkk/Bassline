@@ -1,10 +1,10 @@
- % Filename: bassline.m
+% Filename: bassline.m
 % Function: detect bass line of a song
 % Author: tangkk
 % Date: Aug. 16th 2014
 % Organization: The University of Hong Kong
 
-function [correctRate, lengthSong, misses, player] = bassline(DEBUG, SINGLE, ISORDER, ISPLOT, MINDIST, MINHEIGHT, MINPROM, THRESHOLD, ROOT)
+function [correctRate, lengthSong, misses] = bassline(DEBUG, SINGLE, ISORDER, ISPLOT, MINDIST, MINHEIGHT, MINPROM, ROOT)
 
 close all;
 
@@ -23,7 +23,7 @@ if DEBUG == 0
     fid = fopen(outputpath, 'w');
     for i = 1:1:length(files)  
         formatSpec = formatSelect(i, files);
-        [bass, player] = singlebass([ROOT files(i).name], DEBUG, ISPLOT, MINHEIGHT, MINDIST, MINPROM, THRESHOLD);
+        bass = singlebass([ROOT files(i).name], DEBUG, ISPLOT, MINHEIGHT, MINDIST, MINPROM);
         fprintf(fid, formatSpec, i, files(i).name(1:end-4), bass);
     end
     fclose(fid);
@@ -33,7 +33,7 @@ end
 
 if DEBUG == 1
     %%%% detect a single bass %%%%
-    [bass, player] = singlebass([ROOT files(SINGLE).name], DEBUG, ISPLOT, MINHEIGHT, MINDIST, MINPROM, THRESHOLD);
+    bass = singlebass([ROOT files(SINGLE).name], DEBUG, ISPLOT, MINHEIGHT, MINDIST, MINPROM);
     lengthSong = 1;
     trueBass = readGroundTruth(groundtruthpath, SINGLE);
     display(trueBass);

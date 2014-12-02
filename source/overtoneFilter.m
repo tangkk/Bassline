@@ -16,8 +16,8 @@ function select = overtoneFilter(input, lstart, lend, locs, halfwindow, isdebug,
 % select the loc with maximum sum
 %
 
+select = 1;
 if ison
-    select = 1;
     len = length(input);
     % guard the searching range based on the working range
     locmax = min(lend,len);
@@ -35,22 +35,16 @@ if ison
         end
         neighbourhood = (loc - halfwindow):1:(loc+halfwindow);
         for overtone = 1:1:3
-            overtonesum(i) = overtonesum(i) + sum(input(overtone*neighbourhood)./overtone);
+            overtonesum(i) = overtonesum(i) + sum(input(overtone*neighbourhood));
         end
     end
 
     if ~isempty(overtonesum)
-        [m,oi] = max(overtonesum);
-        if overtonesum(oi) - overtonesum(1) > 0.5
-            select = oi;
-        end
+        [m,select] = max(overtonesum);
     end
 
     if isdebug
         display(overtonesum);
         display(select);
     end
-    
-else
-    select = 1;
 end

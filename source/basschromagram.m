@@ -4,10 +4,10 @@
 % Date: Aug. 16th 2014
 % Organization: The University of Hong Kong
 
-function basschroma = basschromagram(fftAmpSpec, f)
+function [basschroma, bassmax] = basschromagram(fftAmpSpec, f)
 
 % bass chroma
-% bass range: 20Hz - 200Hz
+% bass range: 20Hz - 450Hz
 % A = 69, mod (69, 12) = 9, thus
 % C 1
 % C# 2
@@ -23,15 +23,15 @@ function basschroma = basschromagram(fftAmpSpec, f)
 % B 12
 idxLow = 0;
 idxHigh = 0;
-for i = [1:1:length(f)]
+for i = 1:1:length(f)
     if f(i) >= 20
         idxLow = i;
         break;
     end
 end
 
-for i = [idxLow:1:length(f)]
-    if f(i) >= 300
+for i = idxLow:1:length(f)
+    if f(i) >= 450
         idxHigh = i;
         break;
     end
@@ -39,13 +39,12 @@ end
 
 fm = f(idxLow:idxHigh);
 fftAmpSpecShort = fftAmpSpec(idxLow:idxHigh);
-midiNumber = round(12.*log2(fm./440)+69);
-midiPitchClass = mod (midiNumber, 12);
-midiPitchClass = midiPitchClass + 1;
+fmidiNumber = round(12.*log2(fm./440)+69);
+fmidiPitchClass = mod (fmidiNumber, 12) + 1;
 basschroma = [0,0,0,0,0,0,0,0,0,0,0,0];
 
-for i=[1:1:length(midiPitchClass)]
-    basschroma(midiPitchClass(i)) = basschroma(midiPitchClass(i)) + fftAmpSpecShort(i);
+for i=1:1:length(fmidiPitchClass)
+    basschroma(fmidiPitchClass(i)) = basschroma(fmidiPitchClass(i)) + fftAmpSpecShort(i);
 end
-[chromaMax, tonalMax] = max(basschroma);
-basschroma = basschroma/chromaMax;
+[basschromaMax, bassmax] = max(basschroma);
+basschroma = basschroma/basschromaMax;

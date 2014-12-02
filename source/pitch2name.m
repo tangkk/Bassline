@@ -15,6 +15,10 @@ name = [];
 % A# 11
 % B 12
     switch (pitch)
+        case -1
+            name = 'minor';
+        case 0
+            name = 'major';
         case 1
             name = 'C';
         case 2

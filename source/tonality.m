@@ -111,7 +111,7 @@ tonal = [0,0];
         tonal = [0,0]; % none key
     else
         if chroma(majorIdx) > chroma(minorIdx)
-            tonal = [1, majorIdx]; % major key
+            tonal = [0, majorIdx]; % major key
         else
             tonal = [-1, minorIdx]; % minor key
         end

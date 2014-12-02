@@ -1,6 +1,7 @@
-function [bass, player] = singlebass(path, isdebug, isplot, minheight, mindist, minprom, threshold)
+function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
 
     %%%% detect a single bass %%%%
+    bass = [];
     [song,fs] = audioread(path);
 
     % normalize the song (songMono or songDif)
@@ -11,22 +12,33 @@ function [bass, player] = singlebass(path, isdebug, isplot, minheight, mindist, 
     [songMono, fs] = myDownsample(songMono, downSampleRate, fs);
 
     % get the spectrogram and SPL of the piece (FFT) (Dif)
-    [f, fftSPLSpec] = myFFT(songMono, fs);
+    [f, fftAmpSpec, fftSPLSpec] = myFFT(songMono, fs);
     fftSPLSpec = normalize(fftSPLSpec);
     fftSPLSpec = noisegate(fftSPLSpec, 0);
+    fftAmpSpec = normalize(fftAmpSpec);
+    fftAmpSpec = noisegate(fftAmpSpec, 0);
+    
+    % gather some musical information to be further utilized
+%     [basschroma, bassmax] = basschromagram(fftAmpSpec, f);
+%     bassmax = pitch2name(bassmax);
+%     [chroma, chromamax] = chromagram(fftAmpSpec, f);
+%     chromamax = pitch2name(chromamax);
+%     tonal = tonality(chroma);
+%     tonalgravity = pitch2name(tonal(2));
+%     tonaltype = pitch2name(tonal(1));
     
     % compress the spectrum by loudness measure
     % fftSPLSpec = SPL2loudness(fftSPLSpec, f);
     
     % adaptively choosing a starting point of a working range
-    [lstart, lend] = adaptiveRangeSelect(fftSPLSpec);
+    [initiallocs, lstart, lend] = adaptiveRangeSelect(fftSPLSpec, 0.85);
     
     % reduce the range of the spectrum for focusing of process
     [rf, rfftSPLSpec] = reduceLength(f, fftSPLSpec, lstart, lend);
     
     % pre-process the spectrum
-    % fftSPLSpec = meanfilter(rfftSPLSpec,3);
-    % fftSPLSpec = sgolayfilt(rfftSPLSpec, 5, 9);
+%     rfftSPLSpec = sgolayfilt(rfftSPLSpec, 5, 9);
+%     rfftSPLSpec = variousFilter(rfftSPLSpec, 10, 0);
     rfftSPLSpec = localmaxInterp(rfftSPLSpec);
     
     % normalize the features
@@ -38,23 +50,20 @@ function [bass, player] = singlebass(path, isdebug, isplot, minheight, mindist, 
     
     % post-process the selected peaks and select final bass
     fpeaks = rf(locs);
-    if isdebug    
-        display(fpeaks);
-    end
-    bass = [];
-
     if ~isempty(fpeaks)
         pitchPeaks = freq2pitchclass(fpeaks);
-        select = overtoneFilter(fftSPLSpec, lstart, lend, locs, 1, isdebug, 0);
+%         select = overtoneFilter(fftSPLSpec, lstart, lend, locs, 0, isdebug, 0);
+%         select = peakFilter(initiallocs, lstart + locs - 1, 100, 0);
+        select = 1;
         bass = pitch2name(pitchPeaks(select));
     end
     
     % plotting
     if isdebug == 1
+        display(fpeaks);
         if isplot == 1
             myPlot(rf, rfftSPLSpec);
         end
         player = audioplayer(songMono, fs);
-    else
-        player = 0;
+        play(player);
     end

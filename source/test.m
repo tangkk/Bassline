@@ -9,11 +9,10 @@
 
 SINGLE = -1;
 ISORDER = 1;
-ISPLOT = 1;
+ISPLOT = 0;
 MINPROM = 0.2;
 MINHEIGHT = 0.80;
 MINDIST = 20;
-THRESHOLD = 0;
 ROOT = '../testcase/realchords/';
 NAME = '1984';
 
@@ -43,7 +42,7 @@ if TEST == 0 && ~isempty(subRoots)
     for i = 1:1:length(subRoots)
         name = subRoots(i).name;
         foldername = [ROOT name '/'];
-        [correctRate, lengthSong, misses, player] = bassline(DEBUG, SINGLE, ISORDER, ISPLOT, MINDIST, MINHEIGHT, MINPROM, THRESHOLD, foldername);
+        [correctRate, lengthSong, misses] = bassline(DEBUG, SINGLE, ISORDER, ISPLOT, MINDIST, MINHEIGHT, MINPROM, foldername);
         sumCorrectRate = sumCorrectRate + correctRate*lengthSong;
         sumLength = sumLength + lengthSong;
         display(name);
@@ -62,13 +61,10 @@ end
 %%%%%% test one %%%%%%
 if TEST == 1
     testRoot = [ROOT NAME '/'];
-    [correctRate, lengthSong, misses, player] = bassline(DEBUG, SINGLE, ISORDER, ISPLOT,MINDIST, MINHEIGHT, MINPROM, THRESHOLD, testRoot);
+    [correctRate, lengthSong, misses] = bassline(DEBUG, SINGLE, ISORDER, ISPLOT,MINDIST, MINHEIGHT, MINPROM, testRoot);
     display(NAME);
     display(lengthSong);
     display(misses);
     display(correctRate);
-    if DEBUG == 1
-%         play(player);
-    end
 end
 

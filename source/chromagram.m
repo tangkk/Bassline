@@ -4,7 +4,7 @@
 % Date: Aug. 16th 2014
 % Organization: The University of Hong Kong
 
-function chroma = chromagram(fftAmpSpec, f)
+function [chroma,chromaMax] = chromagram(fftAmpSpec, f)
 
 % chroma
 % the mid feature is chroma of the song
@@ -21,20 +21,19 @@ function chroma = chromagram(fftAmpSpec, f)
 % A 10
 % A# 11
 % B 12
-for i = [1:1:length(f)]
+for i = 1:1:length(f)
     if f(i) >= 20
         fm = f(i:length(f));
         fftAmpSpecShort = fftAmpSpec(i:length(fftAmpSpec));
         break;
     end
 end
-midiNumber = round(12.*log2(fm./440)+69);
-midiPitchClass = mod (midiNumber, 12);
-midiPitchClass = midiPitchClass + 1;
+fmidiNumber = round(12.*log2(fm./440)+69);
+fmidiPitchClass = mod (fmidiNumber, 12) + 1;
 chroma = [0,0,0,0,0,0,0,0,0,0,0,0];
 
-for i=[1:1:length(midiPitchClass)]
-    chroma(midiPitchClass(i)) = chroma(midiPitchClass(i)) + fftAmpSpecShort(i);
+for i=1:1:length(fmidiPitchClass)
+    chroma(fmidiPitchClass(i)) = chroma(fmidiPitchClass(i)) + fftAmpSpecShort(i);
 end
-[chromaMax, tonalMax] = max(chroma);
-chroma = chroma/chromaMax;
+[chromagramMax, chromaMax] = max(chroma);
+chroma = chroma/chromagramMax;
