@@ -8,8 +8,7 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
     songMono = toMono(song);
     
     % downsampling
-    downSampleRate = 10;
-    [songMono, fs] = myDownsample(songMono, downSampleRate, fs);
+    [songMono, fs] = myDownsample(songMono, 10, fs);
 
     % get the spectrogram and SPL of the piece (FFT) (Dif)
     [f, fftAmpSpec, fftSPLSpec] = myFFT(songMono, fs);
@@ -52,9 +51,9 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
     fpeaks = rf(locs);
     if ~isempty(fpeaks)
         pitchPeaks = freq2pitchclass(fpeaks);
-%         select = overtoneFilter(fftSPLSpec, lstart, lend, locs, 0, isdebug, 0);
-%         select = peakFilter(initiallocs, lstart + locs - 1, 100, 0);
         select = 1;
+%         select = overtoneFilter(fftSPLSpec, lstart, lend, locs, 3, isdebug, 1);
+%         select = peakFilter(initiallocs, lstart + locs - 1, 100, 1);
         bass = pitch2name(pitchPeaks(select));
     end
     

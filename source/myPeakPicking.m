@@ -1,10 +1,10 @@
 function [pks,locs] = myPeakPicking(input, minHeight, minDist, minProm, isdebug, isN)
 
 % Peak hierarchy in general (clear):
-% - P0: all raw peaks (all local maximas)
-% - P1: all local maximas of P0
-% - P2: all local maximas of P1
-% ...
+%   - P0: all raw peaks (all local maximas)
+%   - P1: all local maximas of P0
+%   - P2: all local maximas of P1
+%   ...
 
 % Peak hierarchy in bass signal(vague):
 %   - P0 stands for raw peaks(all local maximas)

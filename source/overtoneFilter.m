@@ -35,7 +35,7 @@ if ison
         end
         neighbourhood = (loc - halfwindow):1:(loc+halfwindow);
         for overtone = 1:1:3
-            overtonesum(i) = overtonesum(i) + sum(input(overtone*neighbourhood));
+            overtonesum(i) = overtonesum(i) + sum(input(overtone*neighbourhood))./overtone;
         end
     end
 
