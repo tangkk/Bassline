@@ -3,7 +3,13 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
     %%%% detect a single bass %%%%
     bass = [];
     [song,fs] = audioread(path);
-
+    
+    % playback the audio for debugging
+    if isdebug
+        player = audioplayer(song, fs);
+        playblocking(player);
+    end
+    
     % normalize the song (songMono or songDif)
     songMono = toMono(song);
     
@@ -63,6 +69,4 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
         if isplot == 1
             myPlot(rf, rfftSPLSpec);
         end
-        player = audioplayer(songMono, fs);
-        play(player);
     end

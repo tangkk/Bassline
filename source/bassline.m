@@ -28,12 +28,20 @@ if DEBUG == 0
     end
     fclose(fid);
     lengthSong = length(files);
-    [correctRate, misses] = diffGroundTruth(outputpath, groundtruthpath);
+    if exist(groundtruthpath, 'file')
+        [correctRate, misses] = diffGroundTruth(outputpath, groundtruthpath);
+    else
+        display('no groundtruth yet');
+        correctRate = 0;
+        misses = 0;
+    end
+    
 end
 
 if DEBUG == 1
     %%%% detect a single bass %%%%
-    bass = singlebass([ROOT files(SINGLE).name], DEBUG, ISPLOT, MINHEIGHT, MINDIST, MINPROM);
+    path = [ROOT files(SINGLE).name];
+    bass = singlebass(path, DEBUG, ISPLOT, MINHEIGHT, MINDIST, MINPROM);
     lengthSong = 1;
     trueBass = readGroundTruth(groundtruthpath, SINGLE);
     display(trueBass);

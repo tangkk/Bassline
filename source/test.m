@@ -6,15 +6,16 @@
 
 % set SINGLE = -1 to test all songs, SINGLE  = 0 to test one song
 % SINGLE = section number to test a specific section
+function test(SINGLE)
 
-SINGLE = -1;
+% SINGLE = 2;
 ISORDER = 1;
-ISPLOT = 0;
+ISPLOT = 1;
 MINPROM = 0.2;
 MINHEIGHT = 0.80;
 MINDIST = 20;
 ROOT = '../testcase/realchords/';
-NAME = '1984';
+NAME = 'qinggewang';
 
 if SINGLE == 0
     TEST = 1;
