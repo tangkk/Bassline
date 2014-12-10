@@ -22,6 +22,7 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
     fftSPLSpec = noisegate(fftSPLSpec, 0);
     fftAmpSpec = normalize(fftAmpSpec);
     fftAmpSpec = noisegate(fftAmpSpec, 0);
+%     plot(f,fftSPLSpec);
     
     % gather some musical information to be further utilized
 %     [basschroma, bassmax] = basschromagram(fftAmpSpec, f);
@@ -36,7 +37,7 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
     % fftSPLSpec = spl2loudness(fftSPLSpec, f);
     
     % adaptively choosing a starting point of a working range
-    [initiallocs, lstart, lend] = adaptiveRangeSelect(fftSPLSpec, 0.85);
+    [initiallocs, lstart, lend] = adaptiveRangeSelect(fftSPLSpec, 0.85, 300);
     
     % reduce the range of the spectrum for focusing of process
     [rf, rfftSPLSpec] = reduceLength(f, fftSPLSpec, lstart, lend);
@@ -65,7 +66,9 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
     
     % plotting
     if isdebug == 1
-        display(fpeaks);
+        for i = 1:1:length(pitchPeaks)
+            display(pitch2name(pitchPeaks(i)));
+        end
         if isplot == 1
             myPlot(rf, rfftSPLSpec);
         end

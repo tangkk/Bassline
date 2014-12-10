@@ -8,7 +8,6 @@
 % SINGLE = section number to test a specific section
 function test(SINGLE)
 
-% SINGLE = 2;
 ISORDER = 1;
 ISPLOT = 1;
 MINPROM = 0.2;
@@ -17,18 +16,39 @@ MINDIST = 20;
 ROOT = '../testcase/realchords/';
 NAME = 'qinggewang';
 
-if SINGLE == 0
-    TEST = 1;
-    DEBUG = 0;
-else
-    if SINGLE == -1
-        TEST = 0;
-        DEBUG = 0;
-    else
+switch SINGLE
+    case '+'
+        f = fopen('single.txt', 'r');
+        SINGLE = fscanf(f, '%d');
+        SINGLE = SINGLE + 1;
+        fclose(f);
         TEST = 1;
         DEBUG = 1;
-    end
+    case '-'
+        f = fopen('single.txt', 'r');
+        SINGLE = fscanf(f, '%d');
+        SINGLE = SINGLE - 1;
+        fclose(f);
+        TEST = 1;
+        DEBUG = 1;
+    case '.'
+        f = fopen('single.txt', 'r');
+        SINGLE = fscanf(f, '%d');
+        fclose(f);
+        TEST = 1;
+        DEBUG = 1;
+    case '0'
+        TEST = 1;
+        DEBUG = 0;
+    case '-1'
+        TEST = 0;
+        DEBUG = 0;
+    otherwise
+        SINGLE = str2num(SINGLE);
+        TEST = 1;
+        DEBUG = 1;
 end
+        
 subRoots = dir(ROOT);
 subRoots = subRoots(3:end); %exclude . and .. folder
 numSongs = length(subRoots);
@@ -67,5 +87,9 @@ if TEST == 1
     display(lengthSong);
     display(misses);
     display(correctRate);
+    display(SINGLE);
+    f = fopen('single.txt', 'w');
+    fprintf(f, '%d', SINGLE);
+    fclose(f);
 end
 

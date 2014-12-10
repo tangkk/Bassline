@@ -1,4 +1,4 @@
-function [locs, lstart, lend] = adaptiveRangeSelect(input, initminHeigth)
+function [locs, lstart, lend] = adaptiveRangeSelect(input, initminHeigth, compensate)
 
 % This function adaptively calculate a starting point, and a a ending point the
 % working range that is to be further processed by bass detection algortihm
@@ -18,6 +18,6 @@ lend = len;
 [pks, locs] = findpeaks(input, 'MinPeakHeight', initminHeigth);
 
 if ~isempty(locs)
-    lstart = max(1, locs(1) - 300);
-    lend = min(len, locs(end) + 300);
+    lstart = max(1, locs(1) - compensate);
+    lend = min(len, locs(end) + compensate);
 end
