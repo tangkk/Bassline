@@ -16,8 +16,8 @@
 16 Bass of feijichangde1030.16 is C#
 17 Bass of feijichangde1030.17 is F#
 18 Bass of feijichangde1030.18 is A#
-19 Bass of feijichangde1030.19 is C#
-20 Bass of feijichangde1030.20 is D#
+19 Bass of feijichangde1030.19 is G#
+20 Bass of feijichangde1030.20 is C#
 21 Bass of feijichangde1030.21 is F#
 22 Bass of feijichangde1030.22 is A#
 23 Bass of feijichangde1030.23 is G#
@@ -66,7 +66,7 @@
 66 Bass of feijichangde1030.66 is F#
 67 Bass of feijichangde1030.67 is A#
 68 Bass of feijichangde1030.68 is G#
-69 Bass of feijichangde1030.69 is F#
+69 Bass of feijichangde1030.69 is C#
 70 Bass of feijichangde1030.70 is F#
 71 Bass of feijichangde1030.71 is A#
 72 Bass of feijichangde1030.72 is G#
@@ -115,7 +115,7 @@
 115 Bass of feijichangde1030.115 is F#
 116 Bass of feijichangde1030.116 is A#
 117 Bass of feijichangde1030.117 is G#
-118 Bass of feijichangde1030.118 is G#
+118 Bass of feijichangde1030.118 is C#
 119 Bass of feijichangde1030.119 is F#
 120 Bass of feijichangde1030.120 is A#
 121 Bass of feijichangde1030.121 is G#
