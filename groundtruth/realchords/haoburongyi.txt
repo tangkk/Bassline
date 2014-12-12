@@ -42,7 +42,7 @@
 42 Bass of haoburongyi.42 is F#
 43 Bass of haoburongyi.43 is G#
 44 Bass of haoburongyi.44 is A
-45 Bass of haoburongyi.45 is G
+45 Bass of haoburongyi.45 is F#
 46 Bass of haoburongyi.46 is E
 47 Bass of haoburongyi.47 is F#
 48 Bass of haoburongyi.48 is G#
@@ -91,7 +91,7 @@
 91 Bass of haoburongyi.91 is C#
 92 Bass of haoburongyi.92 is B
 93 Bass of haoburongyi.93 is A
-94 Bass of haoburongyi.94 is A
+94 Bass of haoburongyi.94 is B
 95 Bass of haoburongyi.95 is G#
 96 Bass of haoburongyi.96 is G
 97 Bass of haoburongyi.97 is F#
@@ -113,13 +113,13 @@
 113 Bass of haoburongyi.113 is A
 114 Bass of haoburongyi.114 is F#
 115 Bass of haoburongyi.115 is A
-116 Bass of haoburongyi.116 is D
+116 Bass of haoburongyi.116 is F#
 117 Bass of haoburongyi.117 is C
 118 Bass of haoburongyi.118 is A
 119 Bass of haoburongyi.119 is E
-120 Bass of haoburongyi.120 is A#
-121 Bass of haoburongyi.121 is B
-122 Bass of haoburongyi.122 is B
+120 Bass of haoburongyi.120 is B
+121 Bass of haoburongyi.121 is E
+122 Bass of haoburongyi.122 is F#
 123 Bass of haoburongyi.123 is G#
 124 Bass of haoburongyi.124 is A
 125 Bass of haoburongyi.125 is G#
