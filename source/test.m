@@ -6,7 +6,7 @@
 
 % set SINGLE = -1 to test all songs, SINGLE  = 0 to test one song
 % SINGLE = section number to test a specific section
-function test(NAME, SINGLE)
+function test(NAME, SINGLE, EXCLUDE)
 
 ISORDER = 1;
 ISPLOT = 1;
@@ -53,26 +53,34 @@ subRoots = subRoots(3:end); %exclude . and .. folder
 numSongs = length(subRoots);
 sumCorrectRate = 0;
 sumLength = 0;
-correctRates = [];
-misses = [];
-
+display(EXCLUDE);
 %%%%%% test all %%%%%%
 if TEST == 0 && ~isempty(subRoots)
     DEBUG = 0;
-    for i = 1:1:length(subRoots)
+    correctRates = zeros(0, numSongs);
+    for i = 1:1:numSongs
         name = subRoots(i).name;
+        if ~isempty(strfind(EXCLUDE, name))
+            continue;
+        end
         foldername = [ROOT name '/'];
         [correctRate, lengthSong, misses] = bassline(DEBUG, SINGLE, ISORDER, ISPLOT, MINDIST, MINHEIGHT, MINPROM, foldername);
         sumCorrectRate = sumCorrectRate + correctRate*lengthSong;
         sumLength = sumLength + lengthSong;
         display(name);
         display(correctRate);
-        correctRates = [correctRates correctRate];
+        correctRates(i) = correctRate;
     end
 
     avgCorrectRate = sumCorrectRate / sumLength;
-    for j = 1:1:length(subRoots)
-        s = [subRoots(j).name ' correct rate is ' num2str(correctRates(j))];
+    for j = 1:1:numSongs
+        name = subRoots(j).name;
+        if ~isempty(strfind(EXCLUDE, name))
+            display(name);
+            display('skip');
+            continue;
+        end
+        s = [name ' correct rate is ' num2str(correctRates(j))];
         display(s);
     end
     display(avgCorrectRate);
