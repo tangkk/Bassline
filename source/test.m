@@ -53,6 +53,7 @@ subRoots = subRoots(3:end); %exclude . and .. folder
 numSongs = length(subRoots);
 sumCorrectRate = 0;
 sumLength = 0;
+names = [];
 display(EXCLUDE);
 %%%%%% test all %%%%%%
 if TEST == 0 && ~isempty(subRoots)
@@ -63,6 +64,7 @@ if TEST == 0 && ~isempty(subRoots)
         if ~isempty(strfind(EXCLUDE, name))
             continue;
         end
+        names = [names name];
         foldername = [ROOT name '/'];
         [correctRate, lengthSong, misses] = bassline(DEBUG, SINGLE, ISORDER, ISPLOT, MINDIST, MINHEIGHT, MINPROM, foldername);
         sumCorrectRate = sumCorrectRate + correctRate*lengthSong;
@@ -84,6 +86,14 @@ if TEST == 0 && ~isempty(subRoots)
         display(s);
     end
     display(avgCorrectRate);
+    figure;
+    for i = 1:1:length(correctRates)
+        if correctRates(i) == 0
+            correctRates(i) = [];
+        end
+    end
+    correctRates = [correctRates avgCorrectRate];
+    bar(correctRates);
 end
 
 %%%%%% test one %%%%%%

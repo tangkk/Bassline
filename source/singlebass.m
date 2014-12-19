@@ -13,6 +13,10 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
     % normalize the song (songMono or songDif)
     songMono = toMono(song);
     
+    % calculate various music features
+%     up = unitpower(songMono);
+%     zcr = zeroCrossingRate(songMono);
+    
     % downsampling
     [songMono, fs] = myDownsample(songMono, 10, fs);
 
