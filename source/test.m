@@ -6,7 +6,7 @@
 
 % set SINGLE = -1 to test all songs, SINGLE  = 0 to test one song
 % SINGLE = section number to test a specific section
-function test(NAME, SINGLE, EXCLUDE)
+function test(NAME, EXCLUDE, SINGLE)
 
 ISORDER = 1;
 ISPLOT = 1;

@@ -27,6 +27,7 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
     fftAmpSpec = normalize(fftAmpSpec);
     fftAmpSpec = noisegate(fftAmpSpec, 0);
 %     plot(f,fftSPLSpec);
+%     plot(f, fftAmpSpec);
     
     % gather some musical information to be further utilized
 %     [basschroma, bassmax] = basschromagram(fftAmpSpec, f);
@@ -41,22 +42,24 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
     % fftSPLSpec = spl2loudness(fftSPLSpec, f);
     
     % adaptively choosing a starting point of a working range
-    [initiallocs, lstart, lend] = adaptiveRangeSelect(fftSPLSpec, 0.85, 300);
+%     [initiallocs, lstart, lend] = adaptiveRangeSelect(fftAmpSpec, 0.20, 100);
+    [initiallocs, lstart, lend] = adaptiveRangeSelect(fftSPLSpec, 0.80, 100);
     
     % reduce the range of the spectrum for focusing of process
-    [rf, rfftSPLSpec] = reduceLength(f, fftSPLSpec, lstart, lend);
+%     [rf, workingSpec] = reduceLength(f, fftAmpSpec, lstart, lend);
+    [rf, workingSpec] = reduceLength(f, fftSPLSpec, lstart, lend);
     
     % pre-process the spectrum
 %     rfftSPLSpec = sgolayfilt(rfftSPLSpec, 5, 9);
 %     rfftSPLSpec = variousFilter(rfftSPLSpec, 10, 0);
-    rfftSPLSpec = localmaxInterp(rfftSPLSpec);
+    workingSpec = localmaxInterp(workingSpec);
     
     % normalize the features
-    rfftSPLSpec = normalize(rfftSPLSpec);
-    rfftSPLSpec = noisegate(rfftSPLSpec, 0);
+    workingSpec = normalize(workingSpec);
+    workingSpec = noisegate(workingSpec, 0);
 
     % peak detection
-    [pks, locs] = myPeakPicking(rfftSPLSpec, minheight, mindist, minprom, isdebug, 0);
+    [pks, locs] = myPeakPicking(workingSpec, minheight, mindist, minprom, isdebug, 0);
     
     % post-process the selected peaks and select final bass
     fpeaks = rf(locs);
@@ -65,6 +68,7 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
         select = 1;
 %         select = overtoneFilter(fftSPLSpec, lstart, lend, locs, 3, isdebug, 1);
 %         select = peakFilter(initiallocs, lstart + locs - 1, 100, 1);
+%         select = doubleFilter(pitchPeaks);
         bass = pitch2name(pitchPeaks(select));
     end
     
@@ -74,6 +78,6 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
             display(pitch2name(pitchPeaks(i)));
         end
         if isplot == 1
-            myPlot(rf, rfftSPLSpec);
+            myPlot(rf, workingSpec);
         end
     end
