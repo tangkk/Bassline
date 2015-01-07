@@ -75,7 +75,7 @@ function bass = singlebass(path, isdebug, isplot, minheight, mindist, minprom)
     % plotting
     if isdebug == 1
         for i = 1:1:length(pitchPeaks)
-            display(pitch2name(pitchPeaks(i)));
+            display([pitch2name(pitchPeaks(i)) ' ' num2str(fpeaks(i)) ' ' num2str(fpeaks(i)/fpeaks(1))]);
         end
         if isplot == 1
             myPlot(rf, workingSpec);
